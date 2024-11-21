@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "name" : "main",
+            "program": "${workspaceFolder}/lib/main.dart",
+            "request": "launch",
+            "type": "dart",
+        }
+    ]
+}

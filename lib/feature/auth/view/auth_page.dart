@@ -6,7 +6,7 @@ class AuthPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const AppScaffold(
-      appBarText: AppConstants.authPageTitle,
+      // appBarText: AppConstants.authPageTitle,
       body: AuthPageBody(),
     );
   }

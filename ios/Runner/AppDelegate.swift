@@ -8,6 +8,11 @@ import UIKit
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
     GeneratedPluginRegistrant.register(with: self)
+    // In AppDelegate.application method
+    WorkmanagerPlugin.registerBGProcessingTask(withIdentifier: "task-identifier")
+
+    // Register a periodic task in iOS 13+
+    WorkmanagerPlugin.registerPeriodicTask(withIdentifier: "be.tramckrijte.workmanagerExample.iOSBackgroundAppRefresh", frequency: NSNumber(value: 20 * 60))
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
 }

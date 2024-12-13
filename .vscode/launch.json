@@ -5,6 +5,12 @@
             "program": "${workspaceFolder}/lib/main.dart",
             "request": "launch",
             "type": "dart",
-        }
+        },
+        {
+            "name" : "main_work_manager",
+            "program": "${workspaceFolder}/lib/work_manager/work_manager.dart",
+            "request": "launch",
+            "type": "dart",
+        },
     ]
 }

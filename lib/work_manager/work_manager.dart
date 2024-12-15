@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:workmanager/workmanager.dart';
 
-enum JobStatus { started, preUpload, imageUpload, reportUpload, finished }
+enum JobState { started, preUpload, imageUpload, reportUpload, finished }
 
 void callbackDispatcher() {
   Workmanager().executeTask((task, inputData) async {
-    JobStatus currentStatus = JobStatus.values[inputData?['status'] ?? 0];
+    JobState currentStatus = JobState.values[inputData?['status'] ?? 0];
 
     switch (currentStatus) {
-      case JobStatus.started:
+      case JobState.started:
         debugPrint('Job STARTED');
-      case JobStatus.preUpload:
+      case JobState.preUpload:
         debugPrint('Preparing for upload...');
-      case JobStatus.imageUpload:
+      case JobState.imageUpload:
         debugPrint('Uploading images... ');
-      case JobStatus.reportUpload:
+      case JobState.reportUpload:
         debugPrint('Generating report...');
-      case JobStatus.finished:
+      case JobState.finished:
         debugPrint('Job FINSISHED');
     }
 
@@ -51,22 +51,22 @@ class JobScreen extends StatelessWidget {
   }
 
   void _onPressed() async {
-    startJob(JobStatus.started);
+    startJob(JobState.started);
 
     await Future.delayed(const Duration(seconds: 2)); // Simulated delay
-    startJob(JobStatus.preUpload);
+    startJob(JobState.preUpload);
 
     await Future.delayed(const Duration(seconds: 2));
-    startJob(JobStatus.imageUpload);
+    startJob(JobState.imageUpload);
 
     await Future.delayed(const Duration(seconds: 5));
-    startJob(JobStatus.reportUpload);
+    startJob(JobState.reportUpload);
 
     await Future.delayed(const Duration(seconds: 5));
-    startJob(JobStatus.finished);
+    startJob(JobState.finished);
   }
 
-  void startJob(JobStatus status) {
+  void startJob(JobState status) {
     Workmanager().registerOneOffTask(
       'JobTask${status.name}',
       status.name,
